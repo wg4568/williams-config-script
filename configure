@@ -13,7 +13,6 @@ sudo apt-get install $(cat ./apt.txt | tr '\n' ' ') -y
 cat ./snap.txt | while read line || [[ -n $line ]];
 do
     sudo snap install $line;
-    echo Done installing $line;
 done
 
 # Install NVM and Node 20
