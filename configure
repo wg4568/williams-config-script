@@ -46,22 +46,24 @@ mv ~/Desktop ~/Templates ~/Public ~/Documents ~/Music ~/Pictures ~/Videos ~/desk
 mv ~/Downloads ~/downloads
 
 source ~/.config/user-dirs.dirs
-sed -i "s/\/home\/william\/Desktop/$(echo $XDG_DESKTOP_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
-sed -i "s/\/home\/william\/Documents/$(echo $XDG_DOCUMENTS_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
-sed -i "s/\/home\/william\/Music/$(echo $XDG_MUSIC_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
-sed -i "s/\/home\/william\/Pictures/$(echo $XDG_PICTURES_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
-sed -i "s/\/home\/william\/Public/$(echo $XDG_PUBLICSHARE_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
-sed -i "s/\/home\/william\/Templates/$(echo $XDG_TEMPLATES_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
-sed -i "s/\/home\/william\/Videos/$(echo $XDG_VIDEOS_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
-sed -i "s/\/home\/william\/Downloads/$(echo $XDG_DOWNLOAD_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
+ESC_HOME="$(echo $HOME | sed 's/\//\\\//g')"
+sed -i "s/$ESC_HOME\/Desktop/$(echo $XDG_DESKTOP_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
+sed -i "s/$ESC_HOME\/Documents/$(echo $XDG_DOCUMENTS_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
+sed -i "s/$ESC_HOME\/Music/$(echo $XDG_MUSIC_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
+sed -i "s/$ESC_HOME\/Pictures/$(echo $XDG_PICTURES_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
+sed -i "s/$ESC_HOME\/Public/$(echo $XDG_PUBLICSHARE_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
+sed -i "s/$ESC_HOME\/Templates/$(echo $XDG_TEMPLATES_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
+sed -i "s/$ESC_HOME\/Videos/$(echo $XDG_VIDEOS_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
+sed -i "s/$ESC_HOME\/Downloads/$(echo $XDG_DOWNLOAD_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
 xdg-user-dirs-update
 
 # Other file stuff
 mkdir ~/projects ~/bin
 cp $CONFIG_DIR/wallpaper.png ~/desk/Pictures/wallpaper.png
+cp $CONFIG_DIR/bin/* ~/bin/
+chmod +x ~/bin/*
 sudo mkdir /mnt/counter
 sudo mkdir /mnt/media
-chmod +x ~/bin/*
 
 # Update bashrc
 echo 'PATH="$HOME/.local/bin:$HOME/bin:$PATH"' >> ~/.bashrc
@@ -69,7 +71,7 @@ echo '. ~/.aliases' >> ~/.bashrc
 
 # Desktop customization with konsave
 ~/.local/bin/konsave -i $CONFIG_DIR/konsave.knsv
-~/.local/bin/konsave -a $CONFIG_DIR/konsave.knsv
+~/.local/bin/konsave -a konsave
 ~/.local/bin/konsave -r konsave
 
 # Git stuff
