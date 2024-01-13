@@ -24,6 +24,5 @@ cp ~/.aliases $CONFIG_DIR/aliases.sh
 sudo cp /etc/wireguard/wg0.conf $CONFIG_DIR/wireguard.conf
 sudo cp /etc/conky/conky.conf $CONFIG_DIR/conky.conf
 
-SAVE_NAME=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13; echo)
-konsave -s $SAVE_NAME && konsave -e $SAVE_NAME && konsave -r $SAVE_NAME
-mv ./$SAVE_NAME.knsv $CONFIG_DIR/konsave.knsv
+konsave -s konsave && konsave -e konsave && konsave -r konsave
+mv ./konsave.knsv $CONFIG_DIR/konsave.knsv
