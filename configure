@@ -3,7 +3,7 @@
 CONFIG_DIR="./config"
 
 # Install apt packages
-sudo apt install $(cat ./apt.txt | tr '\n' ' ') -y
+sudo apt-get install $(cat ./apt.txt | tr '\n' ' ') -y
 
 # Install snap packages
 for p in $(cat ./snap.txt); do sudo snap install $p; done
