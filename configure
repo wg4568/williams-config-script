@@ -53,7 +53,7 @@ sed -i "s/\/home\/william\/Videos/$(echo $XDG_VIDEOS_DIR | sed 's/\//\\\//g')/g"
 sed -i "s/\/home\/william\/Downloads/$(echo $XDG_DOWNLOAD_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
 
 # Other system commands
-echo 'PATH="$HOME/bin:$PATH"' >> ~/.profile
+echo 'PATH="$HOME/.local/bin:$HOME/bin:$PATH"' >> ~/.bashrc
 echo '. ~/.aliases' >> ~/.bashrc
 xdg-user-dirs-update
 konsave -i $CONFIG_DIR/konsave.knsv
