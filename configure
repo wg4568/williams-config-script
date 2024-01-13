@@ -6,7 +6,11 @@ CONFIG_DIR="./config"
 sudo apt-get install $(cat ./apt.txt | tr '\n' ' ') -y
 
 # Install snap packages
-for p in $(cat ./snap.txt); do sudo snap install $p; done
+cat ./snap.txt | while read line || [[ -n $line ]];
+do
+    sudo snap install $line;
+    echo Done installing $line;
+done
 
 # Install NVM and Node 20
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
