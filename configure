@@ -66,11 +66,11 @@ chmod +x ~/bin/*
 # Update bashrc
 echo 'PATH="$HOME/.local/bin:$HOME/bin:$PATH"' >> ~/.bashrc
 echo '. ~/.aliases' >> ~/.bashrc
-source ~/.bashrc
 
-konsave -i $CONFIG_DIR/konsave.knsv
-konsave -a $CONFIG_DIR/konsave.knsv
-konsave -r konsave
+# Desktop customization with konsave
+~/.local/bin/konsave -i $CONFIG_DIR/konsave.knsv
+~/.local/bin/konsave -a $CONFIG_DIR/konsave.knsv
+~/.local/bin/konsave -r konsave
 
 # Git stuff
 git config --global user.email "william@madebycounter.com"
