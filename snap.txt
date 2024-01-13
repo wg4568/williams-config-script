@@ -1,4 +1,5 @@
 firefox
+slack
 bitwarden
 yubioauth-desktop
 code --classic
