@@ -1,0 +1,27 @@
+#! /bin/bash
+
+read -p "This will purge your current config. Are you sure? " -n 1 -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+fi
+
+rm -rf ./config
+mkdir ./config
+
+mkdir ./config/aws
+mkdir ./config/firefox
+mkdir ./config/bin
+
+cp ~/.aws/* ./config/aws
+cp ~/snap/firefox/common/.mozilla/firefox/*.default/user.js ./config/firefox
+cp ~/desk/Pictures/wallpaper.png ./config/wallpaper.png
+cp ~/bin/* ./config/bin
+cp ~/.config/user-dirs.dirs ./config/user-dirs.dirs
+cp ~/.aliases ./config/aliases.sh
+sudo cp /etc/wireguard/wg0.conf ./config/wireguard.conf
+sudo cp /etc/conky/conky.conf ./config/conky.conf
+
+SAVE_NAME=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13; echo)
+konsave -s $SAVE_NAME && konsave -e $SAVE_NAME && konsave -r $SAVE_NAME
+mv ./$SAVE_NAME.knsv ./config/konsave.knsv

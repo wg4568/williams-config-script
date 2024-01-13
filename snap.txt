@@ -1,0 +1,6 @@
+firefox
+discord
+slack
+bitwarden
+yubioauth-desktop
+code --classic
