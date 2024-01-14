@@ -1,28 +1,5 @@
-#! /bin/bash
-
-CONFIG_DIR="./config"
-
-APT_PACKAGES="
-    curl git unzip gnupg
-    wireguard tmux neofetch
-    gparted conky uxplay transmission-qt
-    cifs-utils keyutils kio-extras openresolv    
-    python3 python3-pip
-"
-
-SNAP_PACKAGES="
-    firefox
-    slack
-    bitwarden
-    yubioath-desktop
-    code --classic
-"
-
-GIT_REPOS="
-    https://github.com/madebycounter/madebycounter.com
-    https://github.com/madebycounter/navaonti.com
-    https://github.com/wg4568/williams-config-script
-"
+tar -xf $WORKING_DIR/config.tar.gz -C $WORKING_DIR
+CONFIG_DIR="$WORKING_DIR/config"
 
 # Update and upgrade
 sudo apt-get update
@@ -115,6 +92,9 @@ cp /usr/share/applications/conky.desktop ~/.config/autostart/
 git config --global user.email "william@madebycounter.com"
 git config --global user.name "William Gardner"
 for u in $(echo $GIT_REPOS); do git clone $u ~/projects/$(basename $u); done
+
+# Clean up
+rm -rf $WORKING_DIR
 
 # Done!
 neofetch

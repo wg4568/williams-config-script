@@ -1,15 +1,11 @@
 #! /bin/bash
 
-CONFIG_DIR="./config"
+source ./src/config.sh
 
-read -p "This will purge your current config. Are you sure? " -n 1 -r
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
-fi
+CONFIG_DIR="$WORKING_DIR/config"
+INSTALLER="./installer"
 
-rm -rf $CONFIG_DIR
-mkdir $CONFIG_DIR
+mkdir -p $CONFIG_DIR
 
 mkdir $CONFIG_DIR/aws
 mkdir $CONFIG_DIR/firefox
@@ -28,5 +24,20 @@ sudo cp /etc/conky/conky.conf $CONFIG_DIR/conky.conf
 konsave -s konsave && konsave -e konsave && konsave -r konsave
 mv ./konsave.knsv $CONFIG_DIR/konsave.knsv
 
-tar -czvf config.tar.gz $CONFIG_DIR
-rm -rf $CONFIG_DIR
+tar -czvf $WORKING_DIR/config.tar.gz -C $WORKING_DIR config
+CONFIG_DATA=$(base64 -w 0 $WORKING_DIR/config.tar.gz)
+rm -rf $WORKING_DIR
+
+echo "#! /bin/bash" > $INSTALLER
+echo "mkdir -p $WORKING_DIR" >> $INSTALLER
+echo "base64 -d > $WORKING_DIR/config.tar.gz <<< $CONFIG_DATA" >> $INSTALLER
+
+cat ./src/config.sh >> $INSTALLER
+echo >> $INSTALLER
+
+cat ./src/install.sh >> $INSTALLER
+echo >> $INSTALLER
+
+chmod +x $INSTALLER
+
+rm -rf $WORKING_DIR
