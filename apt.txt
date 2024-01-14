@@ -13,3 +13,4 @@ kio-extras
 gparted
 conky
 uxplay
+transmission-qt
