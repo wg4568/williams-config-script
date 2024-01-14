@@ -2,8 +2,27 @@
 
 source ./src/config.sh
 
+if [[ $# -lt 1 ]]; then
+    echo "Useage: package <output file>"
+    exit 0
+fi
+
+if test -d $WORKING_DIR; then
+    read -p "$WORKING_DIR exists, remove it? (yes/no) " -n 1 -r
+    echo
+
+    if [[ ! $REPLY =~ ^[Yy]$ ]]
+    then
+        echo "Exiting."
+        exit 0
+    fi
+
+    rm -rf $WORKING_DIR
+    echo "Deleted." 
+fi
+
 CONFIG_DIR="$WORKING_DIR/config"
-INSTALLER="./installer"
+INSTALLER=$1
 
 mkdir -p $CONFIG_DIR
 
@@ -28,12 +47,16 @@ tar -czvf $WORKING_DIR/config.tar.gz -C $WORKING_DIR config
 CONFIG_DATA=$(base64 -w 0 $WORKING_DIR/config.tar.gz)
 rm -rf $WORKING_DIR
 
+# Write to installer file
 echo "#! /bin/bash" > $INSTALLER
-echo "mkdir -p $WORKING_DIR" >> $INSTALLER
-echo "base64 -d > $WORKING_DIR/config.tar.gz <<< $CONFIG_DATA" >> $INSTALLER
 
 cat ./src/config.sh >> $INSTALLER
 echo >> $INSTALLER
+
+cat ./src/preinstall.sh >> $INSTALLER
+echo >> $INSTALLER
+
+echo "base64 -d > $WORKING_DIR/config.tar.gz <<< $CONFIG_DATA" >> $INSTALLER
 
 cat ./src/install.sh >> $INSTALLER
 echo >> $INSTALLER
