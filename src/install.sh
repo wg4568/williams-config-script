@@ -40,11 +40,12 @@ sudo cp $CONFIG_DIR/wireguard.conf /etc/wireguard/wg0.conf
 sudo cp $CONFIG_DIR/conky.conf /etc/conky/
 
 # Update user directories directories
-mkdir ~/desk
-mv ~/Desktop ~/Templates ~/Public ~/Documents ~/Music ~/Pictures ~/Videos ~/desk
-mv ~/Downloads ~/downloads
-
 source ~/.config/user-dirs.dirs
+rm -rf ~/Desktop ~/Documents ~/Music ~/Pictures ~/Public ~/Templates ~/Videos ~/Downloads
+mkdir -p $XDG_DESKTOP_DIR $XDG_DOCUMENTS_DIR $XDG_MUSIC_DIR
+mkdir -p $XDG_PICTURES_DIR $XDG_PUBLICSHARE_DIR $XDG_TEMPLATES_DIR
+mkdir -p $XDG_VIDEOS_DIR $XDG_DOWNLOAD_DIR
+
 ESC_HOME="$(echo $HOME | sed 's/\//\\\//g')"
 sed -i "s/$ESC_HOME\/Desktop/$(echo $XDG_DESKTOP_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
 sed -i "s/$ESC_HOME\/Documents/$(echo $XDG_DOCUMENTS_DIR | sed 's/\//\\\//g')/g" ~/.local/share/user-places.xbel
@@ -58,7 +59,7 @@ xdg-user-dirs-update
 
 # Other file stuff
 mkdir ~/projects ~/bin
-cp $CONFIG_DIR/wallpaper.png ~/desk/Pictures/wallpaper.png
+cp $CONFIG_DIR/wallpaper.png $XDG_PICTURES_DIR/wallpaper.png
 cp $CONFIG_DIR/bin/* ~/bin/
 chmod +x ~/bin/*
 sudo mkdir /mnt/counter
