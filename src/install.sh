@@ -6,14 +6,11 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 # Install apt packages
-echo sudo apt-get install $(echo $APT_PACKAGES | tr '\n' ' ') -y
+sudo apt-get install $(echo $APT_PACKAGES | tr '\n' ' ') -y
 
 # Install snap packages
-while IFS= read -r line; do
-    if [ -n "$line" ]; then
-        echo sudo snap install $line
-    fi
-done <<< $SNAP_PACKAGES
+sudo snap install firefox slack bitwarden yubioath-desktop
+sudo snap install code --classic
 
 # Install NVM and Node 20
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash

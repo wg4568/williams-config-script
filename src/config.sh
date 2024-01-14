@@ -8,14 +8,6 @@ APT_PACKAGES="
     python3 python3-pip
 "
 
-SNAP_PACKAGES="
-    firefox
-    slack
-    bitwarden
-    yubioath-desktop
-    code --classic
-"
-
 GIT_REPOS="
     https://github.com/madebycounter/madebycounter.com
     https://github.com/madebycounter/navaonti.com
