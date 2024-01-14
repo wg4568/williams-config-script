@@ -14,3 +14,4 @@ gparted
 conky
 uxplay
 transmission-qt
+tmux

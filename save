@@ -21,6 +21,7 @@ cp ~/desk/Pictures/wallpaper.png $CONFIG_DIR/wallpaper.png
 cp ~/bin/* $CONFIG_DIR/bin
 cp ~/.config/user-dirs.dirs $CONFIG_DIR/user-dirs.dirs
 cp ~/.aliases $CONFIG_DIR/aliases.sh
+cp ~/.tmux.conf $CONFIG_DIR/tmux.conf
 sudo cp /etc/wireguard/wg0.conf $CONFIG_DIR/wireguard.conf
 sudo cp /etc/conky/conky.conf $CONFIG_DIR/conky.conf
 
