@@ -1,5 +1,0 @@
-firefox
-slack
-bitwarden
-yubioath-desktop
-code --classic
