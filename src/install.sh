@@ -5,6 +5,9 @@ CONFIG_DIR="$WORKING_DIR/config"
 sudo apt-get update
 sudo apt-get upgrade -y
 
+# Repositories
+sudo add-apt-repository ppa:lakinduakash/lwh -y
+
 # Install apt packages
 sudo apt-get install $(echo $APT_PACKAGES | tr '\n' ' ') -y
 

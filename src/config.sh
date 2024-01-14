@@ -4,8 +4,9 @@ APT_PACKAGES="
     curl git unzip gnupg
     wireguard tmux neofetch
     gparted conky uxplay transmission-qt
-    cifs-utils keyutils kio-extras openresolv    
+    cifs-utils keyutils kio-extras openresolv
     python3 python3-pip
+    linux-wifi-hotspot
 "
 
 GIT_REPOS="
