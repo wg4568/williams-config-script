@@ -15,10 +15,6 @@ mkdir $CONFIG_DIR/aws
 mkdir $CONFIG_DIR/firefox
 mkdir $CONFIG_DIR/bin
 
-cp ./apt.txt $CONFIG_DIR/apt.txt
-cp ./repos.txt $CONFIG_DIR/repos.txt
-cp ./snap.txt $CONFIG_DIR/snap.txt
-
 cp ~/.aws/* $CONFIG_DIR/aws
 cp ~/snap/firefox/common/.mozilla/firefox/*.default/user.js $CONFIG_DIR/firefox
 cp ~/desk/Pictures/wallpaper.png $CONFIG_DIR/wallpaper.png
@@ -31,3 +27,6 @@ sudo cp /etc/conky/conky.conf $CONFIG_DIR/conky.conf
 
 konsave -s konsave && konsave -e konsave && konsave -r konsave
 mv ./konsave.knsv $CONFIG_DIR/konsave.knsv
+
+tar -czvf config.tar.gz $CONFIG_DIR
+rm -rf $CONFIG_DIR
