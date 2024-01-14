@@ -33,7 +33,6 @@ pip3 install konsave exif plotly pandas
 
 # Configuration
 mkdir ~/.aws && cp -r $CONFIG_DIR/aws/* ~/.aws/
-cp $CONFIG_DIR/firefox/* ~/snap/firefox/common/.mozilla/firefox/*.default/
 cp $CONFIG_DIR/user-dirs.dirs ~/.config/user-dirs.dirs
 cp $CONFIG_DIR/aliases.sh ~/.aliases
 cp $CONFIG_DIR/tmux.conf ~/.tmux.conf

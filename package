@@ -31,7 +31,6 @@ mkdir $CONFIG_DIR/firefox
 mkdir $CONFIG_DIR/bin
 
 cp ~/.aws/* $CONFIG_DIR/aws
-cp ~/snap/firefox/common/.mozilla/firefox/*.default/user.js $CONFIG_DIR/firefox
 cp ~/desk/Pictures/wallpaper.png $CONFIG_DIR/wallpaper.png
 cp ~/bin/* $CONFIG_DIR/bin
 cp ~/.config/user-dirs.dirs $CONFIG_DIR/user-dirs.dirs
