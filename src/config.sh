@@ -5,7 +5,7 @@ APT_PACKAGES="
     wireguard tmux neofetch
     gparted conky uxplay transmission-qt
     cifs-utils keyutils kio-extras openresolv
-    git gh python3 python3-pip
+    git gh python3 python3-pip default-jre
     linux-wifi-hotspot speedtest-cli
 "
 
