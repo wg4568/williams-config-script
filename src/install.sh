@@ -28,10 +28,9 @@ nvm install 20
 nvm use 20
 
 # Install AWS CLI
-curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o /tmp/awscliv2.zip
-unzip /tmp/awscliv2.zip -d /tmp/
-sudo /tmp/aws/install
-rm -rf /tmp/aws /tmp/awscliv2.zip
+curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o $WORKING_DIR/awscliv2.zip
+unzip $WORKING_DIR/awscliv2.zip -d $WORKING_DIR
+sudo $WORKING_DIR/aws/install
 
 # Install other software
 npm i -g yarn prettier
