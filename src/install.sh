@@ -1,4 +1,10 @@
 tar -xf $WORKING_DIR/config.tar.gz -C $WORKING_DIR
+
+if [[ $1 = "extract" ]]; then
+    echo "Extracted to $WORKING_DIR"
+    exit 0
+fi
+
 CONFIG_DIR="$WORKING_DIR/config"
 
 # Update and upgrade

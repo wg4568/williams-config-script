@@ -9,7 +9,7 @@ if test -d $WORKING_DIR; then
     fi
 
     rm -rf $WORKING_DIR
-    echo "Deleted." 
+    echo "Deleted."
 fi
 
 mkdir -p $WORKING_DIR
