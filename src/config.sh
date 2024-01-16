@@ -2,6 +2,7 @@ WORKING_DIR="/tmp/williams-config-script"
 
 APT_PACKAGES="
     curl unzip gnupg
+    build-essential dkms iw default-jre
     wireguard tmux neofetch
     gparted conky uxplay transmission-qt
     cifs-utils keyutils kio-extras openresolv
