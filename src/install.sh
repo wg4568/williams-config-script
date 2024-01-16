@@ -36,6 +36,7 @@ mkdir ~/.aws && cp -r $CONFIG_DIR/aws/* ~/.aws/
 cp $CONFIG_DIR/user-dirs.dirs ~/.config/user-dirs.dirs
 cp $CONFIG_DIR/aliases.sh ~/.aliases
 cp $CONFIG_DIR/tmux.conf ~/.tmux.conf
+cp $CONFIG_DIR/nanorc ~/.nanorc
 sudo cp $CONFIG_DIR/wireguard.conf /etc/wireguard/wg0.conf
 sudo cp $CONFIG_DIR/conky.conf /etc/conky/
 
