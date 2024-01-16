@@ -99,11 +99,6 @@ git config --global user.email "william@madebycounter.com"
 git config --global user.name "William Gardner"
 for u in $(echo $GIT_REPOS); do git clone $u ~/projects/$(basename $u); done
 
-# WiFi driver
-git clone https://github.com/morrownr/8812au-20210629.git ~/software/8812au-20210629
-cd ~/projects/8812au-20210629
-sudo ./install_driver.sh
-
 # Clean up
 rm -rf $WORKING_DIR
 
