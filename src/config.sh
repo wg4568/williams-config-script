@@ -13,4 +13,5 @@ GIT_REPOS="
     https://github.com/madebycounter/madebycounter.com
     https://github.com/madebycounter/navaonti.com
     https://github.com/wg4568/williams-config-script
+    https://github.com/wg4568/williams-installers
 "
