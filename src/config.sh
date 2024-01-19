@@ -7,6 +7,7 @@ APT_PACKAGES="
     cifs-utils keyutils kio-extras openresolv
     git gh python3 python3-pip default-jre
     linux-wifi-hotspot speedtest-cli
+    vhs
 "
 
 GIT_REPOS="
