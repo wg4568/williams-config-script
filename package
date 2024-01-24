@@ -1,67 +1,31 @@
 #! /bin/bash
 
-source ./src/config.sh
-source ~/.config/user-dirs.dirs
-
-if test -d $WORKING_DIR; then
-    read -p "$WORKING_DIR exists, remove it? (yes/no) " -n 1 -r
-    echo
-
-    if [[ ! $REPLY =~ ^[Yy]$ ]]
-    then
-        echo "Exiting."
-        exit 0
-    fi
-
-    rm -rf $WORKING_DIR
-    echo "Deleted." 
-fi
-
-CONFIG_DIR="$WORKING_DIR/config"
+WD="/tmp/williams-config-script-$(tr -dc A-Za-z0-9 </dev/urandom | head -c 8; echo)"
 
 INSTALLER=$1
 if [[ $# -lt 1 ]]; then
     INSTALLER="./install.sh"
 fi
 
+mkdir -p $WD/files
 
-mkdir -p $CONFIG_DIR
+while read -r -a line
+do
+    if [[ ${#line[@]} -gt 1 && ${line[1]} != "CREATE" ]]; then
+        src=$(eval echo "${line[0]}")
+        dst=$WD/files/${line[1]}
+        sudo cp -r $src $dst
+    fi
+done < ./config/files.txt
 
-mkdir $CONFIG_DIR/aws
-mkdir $CONFIG_DIR/firefox
-mkdir $CONFIG_DIR/bin
+cp -r config $WD
 
-cp ~/.aws/* $CONFIG_DIR/aws
-cp $XDG_PICTURES_DIR/wallpaper.png $CONFIG_DIR/wallpaper.png
-cp ~/bin/* $CONFIG_DIR/bin
-cp ~/.config/user-dirs.dirs $CONFIG_DIR/user-dirs.dirs
-cp ~/.aliases $CONFIG_DIR/aliases.sh
-cp ~/.tmux.conf $CONFIG_DIR/tmux.conf
-cp ~/.nanorc $CONFIG_DIR/nanorc
-sudo cp /etc/wireguard/wg0.conf $CONFIG_DIR/wireguard.conf
-sudo cp /etc/conky/conky.conf $CONFIG_DIR/conky.conf
+echo '#! /bin/bash' > $WD/main.sh
+cat ./src/* >> $WD/main.sh
+chmod +x $WD/main.sh
 
-konsave -s konsave && konsave -e konsave && konsave -r konsave
-mv ./konsave.knsv $CONFIG_DIR/konsave.knsv
+sudo ./util/bundle $WD main.sh $INSTALLER
 
-tar -czvf $WORKING_DIR/config.tar.gz -C $WORKING_DIR config
-CONFIG_DATA=$(base64 -w 0 $WORKING_DIR/config.tar.gz)
-rm -rf $WORKING_DIR
-
-# Write to installer file
-echo "#! /bin/bash" > $INSTALLER
-
-cat ./src/config.sh >> $INSTALLER
-echo >> $INSTALLER
-
-cat ./src/preinstall.sh >> $INSTALLER
-echo >> $INSTALLER
-
-echo "base64 -d > $WORKING_DIR/config.tar.gz <<< $CONFIG_DATA" >> $INSTALLER
-
-cat ./src/install.sh >> $INSTALLER
-echo >> $INSTALLER
-
-chmod +x $INSTALLER
-
-rm -rf $WORKING_DIR
+sudo rm -rf $WD
+echo "Written installer to '$INSTALLER'"
+echo "Done."
