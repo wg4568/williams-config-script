@@ -1,4 +1,4 @@
-xorg plasma konsole dolphin
+konsole dolphin
 curl unzip git tmux
 python3 github-cli
 wireguard-tools openresolv

@@ -29,9 +29,7 @@ echo -n 'base64 -d > $WD/bundle.tgz.gpg <<<' >> $BUNDLE
 echo $FILE_DATA >> $BUNDLE
 echo 'gpg --decrypt --quiet $WD/bundle.tgz.gpg > $WD/bundle.tgz' >> $BUNDLE
 echo 'tar xf $WD/bundle.tgz -C $WD/bundle' >> $BUNDLE
-echo 'cd $WD/bundle' >> $BUNDLE
-echo -n 'sh $WD/bundle/' >> $BUNDLE
-echo "$2" >> $BUNDLE
+echo 'mv $WD/bundle ./installer' >> $BUNDLE
 echo 'rm -rf $WD' >> $BUNDLE
 
 chmod +x $BUNDLE
