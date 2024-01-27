@@ -1,0 +1,25 @@
+~/.bash_aliases             bash_aliases.sh
+~/.bashrc                   bashrc.sh
+~/.gitconfig                gitconfig
+~/.tmux.conf                tmux.conf
+~/.nanorc                   nanorc
+
+~/.config/                  config/
+~/.mozilla/                 mozilla/
+~/.vscode-oss/              vscode/
+
+~/.local/share/user-places.xbel     user-places.xbel
+~/.local/share/konsole/             konsole/
+~/.local/share/kxmlgui5             kxmlgui5/
+
+/etc/wireguard/wg0.conf     wireguard.conf
+
+~/bin/                      bin/
+~/documents/                documents/
+~/desktop                   CREATE
+~/downloads                 CREATE
+~/projects                  CREATE
+~/software                  CREATE
+
+/mnt/counter                CREATE
+/mnt/media                  CREATE

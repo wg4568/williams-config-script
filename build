@@ -1,0 +1,4 @@
+#! /bin/bash
+
+./post-install/pack.sh
+./pre-install/pack.sh

@@ -1,6 +1,0 @@
-konsole dolphin
-curl unzip git tmux
-python3 github-cli
-wireguard-tools openresolv
-bitwarden discord firefox code speedtest-cli
-dnsutils hostapd procps-ng iproute2 haveged

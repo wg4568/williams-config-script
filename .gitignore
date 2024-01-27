@@ -1,1 +1,6 @@
-/*.sh
+.postinstall/
+.preinstall/
+builds/
+pre-install/archlive/airootfs/root/.postinstall
+pre-install/archlive/airootfs/root/install.sh
+pre-install/archlive/airootfs/root/options.conf
