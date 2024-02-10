@@ -9,4 +9,4 @@ sudo cp ./pre-install/options.conf $ROOTHOME
 sudo cp -r ./.postinstall $ROOTHOME
 cat ./pre-install/src/* >> $ROOTHOME/install.sh
 
-sudo mkarchiso -v -w $WD -o ./builds ./pre-install/archlive
+ sudo mkarchiso -v -w $WD -o ./builds ./pre-install/archlive
