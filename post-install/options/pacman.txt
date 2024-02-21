@@ -5,3 +5,4 @@ wireguard-tools openresolv
 bitwarden discord firefox code speedtest-cli
 dnsutils hostapd procps-ng iproute2 haveged
 aircrack-ng wireshark-qt
+bluez bluez-utils
